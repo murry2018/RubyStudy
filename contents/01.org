@@ -126,7 +126,7 @@ y = 1 + 2 \
    #+RESULTS:
    : 49  명의 유저가 있습니다.
 
-** src_text[:exports code]{BEGIN}과 =END=
+** =BEGIN= 과 =END=
 
 =BEGIN= 블록은 스크립트의 가장 처음에 실행되고, =END= 블록은 가장
 나중에 실행된다.
