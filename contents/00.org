@@ -1,3 +1,4 @@
+#+PROPERTY: header-args :exports both
 * Configuration for Emacs
 ** Org-Babel Ruby Setting
 첫째로 =inf-ruby= 모드를 설치한다(=inf-ruby= 모드에 대해서는 [[https://github.com/nonsequitur/inf-ruby][Github]]를
@@ -99,7 +100,11 @@ Org-babel을 이용해 Ruby 코드를 실행하자. =C-c= 단축키로 코드 �
      : 1
    #+END_SRC
 
-더 많은 옵션은 [[https://orgmode.org/manual/Specific-header-arguments.html#Specific-header-arguments][매뉴얼]]을 참고하라.
+3. =:exports= 옵션은 org 파일을 다른 포맷으로 내보낼 때 코드 블록과
+   result 블록 중 무엇을 보여줄 지 결정한다. =code=, =results=,
+   =both=, =none= 중의 하나를 선택할 수 있다. [[https://orgmode.org/manual/exports.html][매뉴얼]]을 참고하라.
+
+더 많은 옵션에 대해서 알고싶다면 [[https://orgmode.org/manual/Specific-header-arguments.html#Specific-header-arguments][매뉴얼]]을 참고하라.
 
 *** 섹션 헤더에 프로퍼티 지정하기
 
