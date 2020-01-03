@@ -1,0 +1,116 @@
+* Configuration for Emacs
+** Org-Babel Ruby Setting
+첫째로 =inf-ruby= 모드를 설치한다(=inf-ruby= 모드에 대해서는 [[https://github.com/nonsequitur/inf-ruby][Github]]를
+참고하라).
+
+-  =M-x package-refresh-contents=
+-  =M-x package-install RET inf-ruby=
+
+그 뒤 ruby babel을 위한 몇가지 설정을 해준다([[http://howardism.org/Technical/Emacs/literate-programming-tutorial.html][이곳]]을 참조했다).
+
+#+BEGIN_SRC emacs-lisp
+  (require 'ob-ruby)
+  (setq org-confirm-babel-evaluate nil
+        org-src-fontify-natively t
+        org-src-tab-acts-natively t)
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((ruby   . t)))
+#+END_SRC
+
+** Org-Babel Ruby Usage
+:PROPERTIES:
+:header-args:ruby: :results value
+:header-args:ruby: :session *sess*
+:END:
+
+Org-babel을 이용해 Ruby 코드를 실행하자. =C-c= 단축키로 코드 블록을
+실행할 수 있다(팁: 코드 블록 템플릿은 =<s TAB= [[https://orgmode.org/manual/Easy-templates.html][템플릿 매크로]]로 빠르게
+만들 수 있고, =C-c '= 단축키로 별도의 버퍼를 열어 편집할 수 있다).
+
+(참고: 어떤 이유에선지 잘 모르겠지만 ruby org-babel은 WSL에서는 잘
+동작하지 않는다)
+
+#+BEGIN_SRC ruby
+  "Hello World!"
+#+END_SRC
+
+#+RESULTS:
+: Hello World!
+
+*** Properties
+
+코드블록에 특별한 프로퍼티를 지정할 수 있다. 몇 가지 예시이다.
+
+1. =:results= 옵션. 무엇을 =RESULTS= 블록에서 보여줄지 결정한다.
+   =value= 혹은 =output= 둘 중 하나를 골라야 한다.
+
+   #+BEGIN_SRC org
+     ,#+BEGIN_SRC ruby :results output
+       puts "hi!"
+     ,#+END_SRC
+
+     ,#+RESULTS:
+     : hi!
+
+     ,#+BEGIN_SRC ruby :results value
+       Dir.entries('/')
+     ,#+END_SRC
+
+     ,#+RESULTS:
+     | proc | home | var | root | ... | boot |
+   #+END_SRC
+
+2. session 옵션. 같은 세션에서 루비가 실행되도록 한다.
+
+   *세션을 사용하지 않을 경우*
+
+   #+BEGIN_SRC org
+     ,#+BEGIN_SRC ruby :results value
+       x = 1
+     ,#+END_SRC
+
+     ,#+RESULTS:
+     : 1
+
+     ,#+BEGIN_SRC ruby :results output
+       puts x
+     ,#+END_SRC
+
+     => -:1:in `<main>': undefined local variable or method `x' for
+        main:Object (NameError)
+   #+END_SRC
+
+   *세션을 사용할 경우*
+
+   #+BEGIN_SRC org
+     ,#+BEGIN_SRC ruby :results value :session foo
+       x = 1
+     ,#+END_SRC
+
+     ,#+RESULTS:
+     : 1
+
+     ,#+BEGIN_SRC ruby :results output :session foo
+       puts x
+     ,#+END_SRC
+
+     ,#+RESULTS:
+     : 1
+   #+END_SRC
+
+더 많은 옵션은 [[https://orgmode.org/manual/Specific-header-arguments.html#Specific-header-arguments][매뉴얼]]을 참고하라.
+
+*** 섹션 헤더에 프로퍼티 지정하기
+
+org 섹션 헤더의 모든 서브트리에 적용할 프로퍼티를 지정하려면, 섹션 헤더에 다음과 같이 쓴다.
+
+#+BEGIN_SRC org
+  ,* My Section
+  :PROPERTIES:
+  :header-args:ruby: :results value
+  :header-args:ruby: :session *sess*
+  :END:
+#+END_SRC
+
+더 자세한 내용은 [[https://orgmode.org/manual/Using-Header-Arguments.html][매뉴얼]]을 참고하라.

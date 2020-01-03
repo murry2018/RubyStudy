@@ -1,3 +1,7 @@
 * 루비 공부
 
 [[https://www.tutorialspoint.com/ruby/index.htm][TutorialsPoint]]를 중심으로, [[https://orgmode.org/][Emacs Org-mode]]를 이용해 공부합니다.
+
+** Contents
+
+- [[contents/00.org][0. 준비하기]] :: Emacs Org-Babel for Ruby 설정하기
