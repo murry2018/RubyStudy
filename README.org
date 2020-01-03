@@ -4,4 +4,5 @@
 
 ** Contents
 
-- [[contents/00.org][0. 준비하기]] :: Emacs Org-Babel for Ruby 설정하기
+- [[contents/00.org][00. 준비하기]] :: Emacs Org-Babel for Ruby 설정하기
+- [[contents/01.org][01. 기초 문법]] :: 루비의 기본적인 문법 구성 요소 살펴보기
