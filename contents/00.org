@@ -1,4 +1,3 @@
-#+PROPERTY: header-args :exports both
 * Configuration for Emacs
 ** Org-Babel Ruby Setting
 첫째로 =inf-ruby= 모드를 설치한다(=inf-ruby= 모드에 대해서는 [[https://github.com/nonsequitur/inf-ruby][Github]]를
@@ -32,7 +31,7 @@ Org-babel을 이용해 Ruby 코드를 실행하자. =C-c= 단축키로 코드 �
 (참고: 어떤 이유에선지 잘 모르겠지만 ruby org-babel은 WSL에서는 잘
 동작하지 않는다)
 
-#+BEGIN_SRC ruby
+#+BEGIN_SRC ruby :exports both
   "Hello World!"
 #+END_SRC
 
