@@ -2,13 +2,12 @@
 :PROPERTIES:
 :header-args:ruby: :results output
 :header-args:ruby: :session *sess*
-:header-args: :exports both
 :END:
 
 ** 띄어쓰기
 루비 함수는 괄호 없이 띄어쓰기로 인자를 전달 할 수 있다.
 
-#+BEGIN_SRC ruby
+#+BEGIN_SRC ruby :exports both
   puts "Hello, Ruby!"
 #+END_SRC
 
@@ -28,7 +27,7 @@
 끝을 나타낸다. 그러나 연산자나 백슬래시(=\=)가 있을 경우 인터프리터는
 표현식이 더 있을것이라 추론하고 다음 행도 함께 읽는다.
 
-#+BEGIN_SRC ruby :results value
+#+BEGIN_SRC ruby :results value :exports both
 y = 1 + 2 \
   + 3
 #+END_SRC
@@ -62,7 +61,7 @@ y = 1 + 2 \
 
 백틱을 이용하여, 셸 커맨드를 실행하고 결과 가져오는 일을 아주 쉽게 할 수 있다.
 
-#+BEGIN_SRC ruby 
+#+BEGIN_SRC ruby :exports both
   mon = 12
   year = 1998
   puts `cal #{mon} #{year}`
@@ -85,7 +84,7 @@ y = 1 + 2 \
 
 1. 기본적으로는 문자열(double-quoted) 형성
 
-   #+BEGIN_SRC ruby
+   #+BEGIN_SRC ruby :exports both
      puts <<EOF
        Long Long Line
      EOF
@@ -95,7 +94,7 @@ y = 1 + 2 \
    :   Long Long Line
 
 2. 작은 따옴표, 백틱을 사용하는 heredocs
-   #+BEGIN_SRC ruby
+   #+BEGIN_SRC ruby :exports both
      puts <<'EOF'
        'Heredocs is cool!'
      EOF
@@ -115,7 +114,7 @@ y = 1 + 2 \
 
 3. heredocs의 결과에 메서드를 호출하거나, 다른 Heredocs에 쌓기
 
-   #+BEGIN_SRC ruby
+   #+BEGIN_SRC ruby :exports both
      print <<`EOC`.chomp,<<"EOF".strip
        wc -l /etc/passwd \
           | cut -f 1 -d ' '
@@ -132,7 +131,7 @@ y = 1 + 2 \
 =BEGIN= 블록은 스크립트의 가장 처음에 실행되고, =END= 블록은 가장
 나중에 실행된다.
 
-#+BEGIN_SRC ruby :session none
+#+BEGIN_SRC ruby :session none :exports both
   END {
     puts 'Good bye!'
   }
@@ -149,7 +148,7 @@ y = 1 + 2 \
 
 ** 주석
 
-#+BEGIN_SRC ruby
+#+BEGIN_SRC ruby :exports both
   puts 'test' # 한줄 주석은 이렇게 쓴다.
   =begin
    여러줄
